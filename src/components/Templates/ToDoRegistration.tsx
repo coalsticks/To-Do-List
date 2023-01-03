@@ -1,5 +1,5 @@
 import ArrowPathIcon from "@heroicons/react/24/solid/ArrowPathIcon";
-import React, { useRef } from "react";
+import React, { KeyboardEvent, useRef } from "react";
 import { ToDoState, TodoType } from "./types";
 
 export const ToDoRegistration = ({
@@ -26,6 +26,7 @@ export const ToDoRegistration = ({
       setItem(todo);
     }
   };
+
   return (
     <div>
       {/* ADD ITEM */}
@@ -40,6 +41,7 @@ export const ToDoRegistration = ({
               placeholder="Type Here"
               type="text"
               id="small-input"
+              maxLength={25}
               className="min-w-lg block w-[60%] p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
 

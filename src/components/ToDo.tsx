@@ -22,12 +22,21 @@ export const ToDo = () => {
         {/* ADD ITEM */}
         <ToDoRegistration setItem={setItem} />
         {/* LIST CONTAINERS */}
-        <div className="flex space-x-14  w-full h-full justify-start mt-6">
+        <div className="flex space-x-14  w-full h-full justify-start mt-6 overflow-y-auto">
           <ListContainer
             title="Tasks"
             pulse={true}
             colorRef="bg-green-500"
             todos={currentItems.filter((todo) => todo.state === ToDoState.TASK)}
+            indices={currentItems
+              .map((item, index) => {
+                if (item.state === ToDoState.TASK) {
+                  return index;
+                }
+              })
+              .filter((index) => index !== undefined)} // removing undefined values from the map
+            currentItems={currentItems}
+            setItem={setItem}
           />
           <ListContainer
             title="In Progress"
@@ -36,6 +45,15 @@ export const ToDo = () => {
             todos={currentItems.filter(
               (todo) => todo.state === ToDoState.IN_PROGRESS
             )}
+            indices={currentItems
+              .map((item, index) => {
+                if (item.state === ToDoState.IN_PROGRESS) {
+                  return index;
+                }
+              })
+              .filter((index) => index !== undefined)}
+            currentItems={currentItems}
+            setItem={setItem}
           />
           <ListContainer
             title="Complete"
@@ -44,6 +62,15 @@ export const ToDo = () => {
             todos={currentItems.filter(
               (todo) => todo.state === ToDoState.COMPLETED
             )}
+            indices={currentItems
+              .map((item, index) => {
+                if (item.state === ToDoState.COMPLETED) {
+                  return index;
+                }
+              })
+              .filter((index) => index !== undefined)}
+            currentItems={currentItems}
+            setItem={setItem}
           />
         </div>
       </div>
